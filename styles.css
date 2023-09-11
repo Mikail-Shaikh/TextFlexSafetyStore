@@ -1,19 +1,44 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<body>
-    <header>
-        <img src="logo.png" alt="FlexTestStore Logo">
-    </header>
-    <main>
-        <!-- List of products with images and Amazon links -->
-        <div class="product">
-            <img src="shoe1.jpg" alt="Shoe 1">
-            <a href="AmazonLinkForShoe1">Shoe 1</a>
-        </div>
-        <!-- Repeat this structure for the other products -->
-    </main>
-</body>
-</html>
+/* Reset some default styles */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the header (centered logo) */
+header {
+    text-align: center;
+    background-color: #333; /* Background color for the header */
+    padding: 20px 0; /* Add some padding to the top and bottom */
+}
+
+header img {
+    width: 200px; /* Adjust the width of your logo */
+}
+
+/* Style the main content (product list) */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px; /* Add some padding around the products */
+}
+
+.product {
+    text-align: center;
+    margin: 20px; /* Add space between products */
+}
+
+.product img {
+    max-width: 100%; /* Ensure images fit within their containers */
+}
+
+.product a {
+    text-decoration: none;
+    color: #333; /* Link color */
+    font-weight: bold;
+}
+
+/* On hover, change link color */
+.product a:hover {
+    color: #ff6600; /* Change to your desired hover color */
+}
