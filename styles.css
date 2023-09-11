@@ -22,7 +22,7 @@ header img {
 /* Main Content Styles */
 main {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjusted product box width */
+    grid-template-columns: repeat(2, 1fr); /* Two products in a row */
     gap: 20px;
     padding: 20px;
     background-color: #fff;
@@ -82,10 +82,10 @@ main {
 
 /* Product Description Styles */
 #product-description {
-    max-width: 100%;
-    padding: 20px;
     background-color: #f7f7f7;
     border-radius: 5px;
+    padding: 20px;
+    grid-column: 2; /* Locks the product description to the right column */
 }
 
 /* Footer Styles */
