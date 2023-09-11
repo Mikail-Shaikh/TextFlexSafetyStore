@@ -22,7 +22,7 @@ header img {
 /* Main Content Styles */
 main {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Two products in a row */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjusted product box width */
     gap: 20px;
     padding: 20px;
     background-color: #fff;
