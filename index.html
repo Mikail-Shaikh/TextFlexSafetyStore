@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <title>FlexTest Store</title>
+    <style>
+        /* Additional CSS styles specific to this HTML file can be placed here */
+    </style>
 </head>
 <body>
     <header>
@@ -19,9 +22,7 @@
             <!-- Product sections will be dynamically generated here -->
         </section>
         <section id="product-description">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec justo eget urna varius hendrerit. Nullam feugiat, velit ac blandit bibendum, massa arcu tempus odio, vel vehicula purus massa vel turpis.
-            </p>
+            <!-- Product description will be displayed here -->
         </section>
     </main>
     <footer>
@@ -39,9 +40,10 @@
                     const products = rows.slice(1);
 
                     const productContainer = document.getElementById('product-container');
+                    const productDescription = document.getElementById('product-description');
 
-                    products.forEach(product => {
-                        if (product.length === header.length) { // Check if the row has the same number of columns as the header
+                    products.forEach((product, index) => {
+                        if (product.length === header.length) {
                             const [imageUrl, productName, description, amazonLink] = product;
 
                             // Create product elements dynamically
@@ -72,6 +74,11 @@
 
                             productSection.appendChild(img);
                             productSection.appendChild(productDetails);
+
+                            productSection.addEventListener('click', () => {
+                                // Replace the product description with the clicked product's description
+                                productDescription.innerHTML = `<p>${description}</p>`;
+                            });
 
                             productContainer.appendChild(productSection);
                         }
