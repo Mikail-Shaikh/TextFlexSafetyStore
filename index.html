@@ -29,7 +29,7 @@
     </footer>
 
     <script>
-        // Function to fetch and parse CSV data (you can keep this if you're using CSV data)
+        // Function to fetch and parse CSV data
         function fetchCSV() {
             fetch('products.csv')
                 .then(response => response.text())
@@ -41,38 +41,40 @@
                     const productContainer = document.getElementById('product-container');
 
                     products.forEach(product => {
-                        const [imageUrl, productName, description, amazonLink] = product;
+                        if (product.length === header.length) { // Check if the row has the same number of columns as the header
+                            const [imageUrl, productName, description, amazonLink] = product;
 
-                        // Create product elements dynamically
-                        const productSection = document.createElement('section');
-                        productSection.classList.add('product');
+                            // Create product elements dynamically
+                            const productSection = document.createElement('section');
+                            productSection.classList.add('product');
 
-                        const img = document.createElement('img');
-                        img.src = imageUrl;
-                        img.alt = productName;
+                            const img = document.createElement('img');
+                            img.src = imageUrl;
+                            img.alt = productName;
 
-                        const productDetails = document.createElement('div');
-                        productDetails.classList.add('product-details');
+                            const productDetails = document.createElement('div');
+                            productDetails.classList.add('product-details');
 
-                        const h2 = document.createElement('h2');
-                        h2.textContent = productName;
+                            const h2 = document.createElement('h2');
+                            h2.textContent = productName;
 
-                        const p = document.createElement('p');
-                        p.textContent = `Description: ${description}`;
+                            const p = document.createElement('p');
+                            p.textContent = `Description: ${description}`;
 
-                        const buyButton = document.createElement('a');
-                        buyButton.classList.add('buy-button');
-                        buyButton.href = amazonLink;
-                        buyButton.textContent = 'Buy Now';
+                            const buyButton = document.createElement('a');
+                            buyButton.classList.add('buy-button');
+                            buyButton.href = amazonLink;
+                            buyButton.textContent = 'Buy Now';
 
-                        productDetails.appendChild(h2);
-                        productDetails.appendChild(p);
-                        productDetails.appendChild(buyButton);
+                            productDetails.appendChild(h2);
+                            productDetails.appendChild(p);
+                            productDetails.appendChild(buyButton);
 
-                        productSection.appendChild(img);
-                        productSection.appendChild(productDetails);
+                            productSection.appendChild(img);
+                            productSection.appendChild(productDetails);
 
-                        productContainer.appendChild(productSection);
+                            productContainer.appendChild(productSection);
+                        }
                     });
                 })
                 .catch(error => console.error('Error fetching CSV:', error));
