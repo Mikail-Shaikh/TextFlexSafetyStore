@@ -82,7 +82,7 @@ main {
 
 /* Product Description Styles */
 #product-description {
-    max-width: 300px;
+    max-width: 150px;
     padding: 20px;
     background-color: #f7f7f7;
     border-radius: 5px;
