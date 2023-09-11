@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="FlexTestStore Logo">
+    </header>
+    <main>
+        <!-- List of products with images and Amazon links -->
+        <div class="product">
+            <img src="shoe1.jpg" alt="Shoe 1">
+            <a href="AmazonLinkForShoe1">Shoe 1</a>
+        </div>
+        <!-- Repeat this structure for the other products -->
+    </main>
+</body>
+</html>
