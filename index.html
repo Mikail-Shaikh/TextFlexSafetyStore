@@ -14,13 +14,22 @@
             </a>
         </nav>
     </header>
-    <main id="product-container"></main>
+    <main>
+        <section id="product-container">
+            <!-- Product sections will be dynamically generated here -->
+        </section>
+        <section id="product-description">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec justo eget urna varius hendrerit. Nullam feugiat, velit ac blandit bibendum, massa arcu tempus odio, vel vehicula purus massa vel turpis.
+            </p>
+        </section>
+    </main>
     <footer>
         <p>&copy; 2023 FlexTest Store</p>
     </footer>
 
     <script>
-        // Function to fetch and parse CSV data
+        // Function to fetch and parse CSV data (you can keep this if you're using CSV data)
         function fetchCSV() {
             fetch('products.csv')
                 .then(response => response.text())
