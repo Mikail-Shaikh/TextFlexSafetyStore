@@ -1,28 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>FlexTest Store</title>
 </head>
 <body>
     <header>
-        <img src="https://m.media-amazon.com/images/G/01/FlexComm/Web/AmazonFlexLogoBlue._CB1577743816_.png" alt="FlexTestStore Logo">
+        <nav>
+            <a href="#">
+                <img src="https://m.media-amazon.com/images/G/01/FlexComm/Web/AmazonFlexLogoBlue._CB1577743816_.png" alt="FlexTest Store Logo">
+            </a>
+        </nav>
     </header>
-    <main>
-        <!-- List of products with images and Amazon links -->
-        <div class="product">
-            <img src="https://m.media-amazon.com/images/I/710nB-D6cRL._AC_SX679_.jpg" alt="NPS Dog Deterrence device">
-            <a href="https://www.amazon.co.uk/NPS-Deterrent-Professional-Emitters-Rechargeable/dp/B0BRYJR8D9/ref=pd_ci_mcx_mh_mcx_views_0?pd_rd_w=Fl6uN&content-id=amzn1.sym.6aea875e-359f-49f3-864f-cff62d586b6a%3Aamzn1.symc.ca948091-a64d-450e-86d7-c161ca33337b&pf_rd_p=6aea875e-359f-49f3-864f-cff62d586b6a&pf_rd_r=E26AJ8A5E0Z11ND0A6T7&pd_rd_wg=GHxnh&pd_rd_r=8fccd76d-d6b5-47fe-b5a7-af92289bf4be&pd_rd_i=B0BRYJR8D9">NPS Dog Deterrence Device</a>
-            <p>Description: This is a fantastic NPS with great features.</p>
-            <a class="buy-button" href="https://www.amazon.co.uk/NPS-Deterrent-Professional-Emitters-Rechargeable/dp/B0BRYJR8D9/ref=pd_ci_mcx_mh_mcx_views_0?pd_rd_w=Fl6uN&content-id=amzn1.sym.6aea875e-359f-49f3-864f-cff62d586b6a%3Aamzn1.symc.ca948091-a64d-450e-86d7-c161ca33337b&pf_rd_p=6aea875e-359f-49f3-864f-cff62d586b6a&pf_rd_r=E26AJ8A5E0Z11ND0A6T7&pd_rd_wg=GHxnh&pd_rd_r=8fccd76d-d6b5-47fe-b5a7-af92289bf4be&pd_rd_i=B0BRYJR8D9">Buy Now</a>
-        </div>
-        <div class="product">
-            <img src="https://m.media-amazon.com/images/I/51zUQaKmbOL._AC_UX679_.jpg" alt="Vest1">
-            <a href="https://www.amazon.co.uk/MHsons-Visibility-Reflective-Waistcoat-Conforms/dp/B0BQW5BNVR/ref=sr_1_11?crid=1EF3LTODBC1AX&keywords=amazon+safety+vest&qid=1694457193&sprefix=amazon+safety+vest%2Caps%2C82&sr=8-11">Safety Vest</a>
-        <p>Description: This is a fantastic NPS with great features.</p>
-            <a class="buy-button" href="https://www.amazon.co.uk/MHsons-Visibility-Reflective-Waistcoat-Conforms/dp/B0BQW5BNVR/ref=sr_1_11?crid=1EF3LTODBC1AX&keywords=amazon+safety+vest&qid=1694457193&sprefix=amazon+safety+vest%2Caps%2C82&sr=8-11">Safety Vest>Buy Now</a>
-        </div>
-        
-        <!-- Repeat this structure for the other products -->
-    </main>
+    <main id="product-container"></main>
+    <footer>
+        <p>&copy; 2023 FlexTest Store</p>
+    </footer>
+
+    <script>
+        // Function to fetch and parse CSV data
+        function fetchCSV() {
+            fetch('products.csv')
+                .then(response => response.text())
+                .then(data => {
+                    const rows = data.split('\n').map(row => row.split(','));
+                    const header = rows[0];
+                    const products = rows.slice(1);
+
+                    const productContainer = document.getElementById('product-container');
+
+                    products.forEach(product => {
+                        const [imageUrl, productName, description, amazonLink] = product;
+
+                        // Create product elements dynamically
+                        const productSection = document.createElement('section');
+                        productSection.classList.add('product');
+
+                        const img = document.createElement('img');
+                        img.src = imageUrl;
+                        img.alt = productName;
+
+                        const productDetails = document.createElement('div');
+                        productDetails.classList.add('product-details');
+
+                        const h2 = document.createElement('h2');
+                        h2.textContent = productName;
+
+                        const p = document.createElement('p');
+                        p.textContent = `Description: ${description}`;
+
+                        const buyButton = document.createElement('a');
+                        buyButton.classList.add('buy-button');
+                        buyButton.href = amazonLink;
+                        buyButton.textContent = 'Buy Now';
+
+                        productDetails.appendChild(h2);
+                        productDetails.appendChild(p);
+                        productDetails.appendChild(buyButton);
+
+                        productSection.appendChild(img);
+                        productSection.appendChild(productDetails);
+
+                        productContainer.appendChild(productSection);
+                    });
+                })
+                .catch(error => console.error('Error fetching CSV:', error));
+        }
+
+        // Call the fetchCSV function to load and parse the CSV data
+        fetchCSV();
+    </script>
 </body>
 </html>
