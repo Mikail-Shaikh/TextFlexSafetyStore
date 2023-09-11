@@ -46,9 +46,9 @@ main {
 }
 
 .product img {
-    width: 100%;
-    max-height: 200px;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 200px; /* Set a maximum height for the product images */
+    object-fit: contain; /* Maintain aspect ratio and fit entire image */
     border-radius: 5px 5px 0 0;
 }
 
